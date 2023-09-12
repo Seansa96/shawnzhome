@@ -1,0 +1,53 @@
+/* styles.css */
+
+/* Apply flexbox to the main container */
+body {
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the page takes up at least the viewport height */
+}
+
+/* Style the header (top bar) */
+header {
+    background-color: burlywood;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Style the main content area */
+main {
+    flex: 1; /* Allow main content to expand to fill available space */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+img {
+    border-radius: 10px;
+    width: 250px;
+    justify-content;
+}
+
+/* Style the left sidebar (side vertical bar) */
+.left-sidebar {
+    width: 200px;
+    background-color: #eee;
+    padding: 10px;
+}
+
+/* Style the main content section */
+.content {
+    flex: 1; /* Allow content to take up remaining space */
+    padding: 10px;
+}
+
+/* Style the footer (bottom bar) */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
