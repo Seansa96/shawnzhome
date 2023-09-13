@@ -1,6 +1,16 @@
 /* styles.css */
 
 /* Apply flexbox to the main container */
+a {
+    color: beige;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: white;
+}
+
 body {
     background-color: burlywood;
     display: flex;
@@ -11,37 +21,71 @@ body {
 /* Style the header (top bar) */
 header {
     background-color: burlywood;
-    color: white;
+    
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: beige;
+    text-shadow: 2px 4px 4px black;
     text-align: center;
     padding: 10px;
 }
 
 /* Style the main content area */
-main {
+.flex-container {
     flex: 1; /* Allow main content to expand to fill available space */
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-start;
     padding: 10px;
+    border: 40px;
+    border-radius: 10px;
+    border-color: black;
+    
 }
 
-img {
+.flex-container div {
+    border: 4px black;
     border-radius: 10px;
-    width: 250px;
-    justify-content;
+    flex: 1 1 auto;
+    height: 80px;
+}
+
+
+img.me {
+    border-radius: 10px;
+    
+    max-width: 100%;
+    margin-top: 10px;
+    
+    margin-right: 30px;
+    margin-bottom: 10px;;
+}
+
+img.folder{
+    margin-left: 5px;
 }
 
 /* Style the left sidebar (side vertical bar) */
 .left-sidebar {
-    width: 200px;
-    background-color: #eee;
-    padding: 10px;
+    
+    background-color: black;
+    padding-top: 15px;
+    padding-right: 10px;
+    margin-right: 10px;
 }
 
 /* Style the main content section */
 .content {
     flex: 1; /* Allow content to take up remaining space */
-    padding: 10px;
+    padding-left: 30px;
+    background-color: burlywood;
+    display: flex; /* Add flex display to control child elements */
+    justify-content: flex-end; /* Move child elements to the right within the content */
+    align-items: flex-start;
+    color: beige;
+    border: 10px;
+    border-radius: 10px;
+    border-color: beige;
 }
 
 /* Style the footer (bottom bar) */
