@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Home Website</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <link rel="icon" href="me.png" type="image/x-icon" />
 </head>
 <body>
     <header>
@@ -12,20 +13,42 @@
         <!-- Top bar content can be placed here -->
         
     </header>
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">
+  <a href="/" class="active">Home</a>
+  <!-- Navigation links (hidden by default) -->
+  <div id="myLinks">
+    <a href="#news">News</a>
+    <a href="/webdav">Totally legal files<img src="47988_folder_icon.png" class="folder"></a>
+    <a href="https://www.royalroad.com/fiction/53983/a-hardcore-gamer-saves-a-different-world">My Ebook</a>
+    <a href="#about">About</a>
+  </div>
+  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+    <script>
+        /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+        function myFunction() {
+          var x = document.getElementById("myLinks");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+        </script>
     <div class="flex-container">
-        <section class="left-sidebar">
-            <!-- Side vertical bar content can be placed here -->
-            <button type="button"></button>
-        </section>
-        <section class="content">
             <div class="one">
-            <ul><p><a href="/webdav">Totally legal files<img src="47988_folder_icon.png" class="folder"></a></p>
-            <p><a href="https://www.royalroad.com/fiction/53983/a-hardcore-gamer-saves-a-different-world">My Ebook</a></p>
-            </ul>
             </div>
-            <div class="two"><img src="me.png" class="me"/></div>
-            <!-- Content of the main section can be placed here -->
-        </section>
+            <div class="two"><img src="me.png" class="me"/>
+            </div>
+            <div class="three">
+            </div>
     </div>
     <footer>
         <!-- Bottom bar content can be placed here -->
