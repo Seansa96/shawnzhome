@@ -110,8 +110,8 @@ header {
     
     display: flex;
     color: beige;
-    text-align: center;
     align-items: center;
+    justify-content: center;
 }
 
 .three {
@@ -128,6 +128,7 @@ img.me {
     height:500px;
     left: 40px;
     top: 50px;
+    object-fit: cover;
 }
 
 img.folder {
