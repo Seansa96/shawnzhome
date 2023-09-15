@@ -111,6 +111,7 @@ header {
     display: flex;
     color: beige;
     text-align: center;
+    align-items: center;
 }
 
 .three {
@@ -122,9 +123,10 @@ header {
 img.me {
     border-radius: 10px;
     position:relative;
+    max-width: fit-content;
     width:500px;
     height:500px;
-    left: 50px;
+    left: 40px;
     top: 50px;
 }
 
