@@ -130,9 +130,10 @@ header {
 
 iframe {
     overflow-clip-margin: content-box !important;
-    border-width: 2px;
-    border-style: inset;
-    border-color: initial;
+    border-width: 1px;
+    border-style: solid;
+    border-color: beige;
+    border-radius: 10px;
     border-image: initial;
     overflow: clip !important;
 }
