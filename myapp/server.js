@@ -25,8 +25,8 @@ app.get('/', (req, res) => {
 });
 
 // Add the /api/search route here
-app.post('/api/search', (req, res) => {
-    const searchTerm = req.body.term;
+app.get('/api/search', (req, res) => {
+    const searchTerm = req.query.q;
     const queryText = 'SELECT * FROM webdav_files WHERE file_name ILIKE $1';
     pool.query(queryText, [`%${searchTerm}%`], (err, dbRes) => {
         if (err) {
@@ -37,6 +37,7 @@ app.post('/api/search', (req, res) => {
         }
     });
 });
+
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
