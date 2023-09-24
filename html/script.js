@@ -12,12 +12,18 @@ function myFunction() {
 
 function search() {
 const searchTerm = document.getElementById('searchInput').value;
+const resultsContainer = document.getElementbyId('three').value;
 
 fetch(`/api/search?q=${searchTerm}`)
   .then(response => response.json())
   .then(data => {
-    // Handle and display data as you wish.
-    console.log(data);
+    resultsContainer.innerHTML = '';
+    data.forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = item.file_name;
+      resultsContainer.appendChild(li);
+    });
+    
   })
   .catch(error => {
     console.error('Error:', error);
