@@ -11,8 +11,8 @@ function myFunction() {
 };
 
 function search() {
-const searchTerm = document.getElementById('searchInput');
-const resultsContainer = document.getElementbyId('three');
+const searchTerm = document.getElementById('searchInput').value;
+const resultsContainer = document.getElementById('resultsContainer');
 
 fetch(`/api/search?q=${searchTerm}`)
   .then(response => response.json())
