@@ -20,7 +20,7 @@ fetch(`/api/search?q=${searchTerm}`)
     resultsContainer.innerHTML = '';
     data.forEach(item => {
       const li = document.createElement('li');
-      li.innerHTML = item.file_name;
+      li.innerHTML = item.filename;
       resultsContainer.appendChild(li);
     });
     
