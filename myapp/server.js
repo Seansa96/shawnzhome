@@ -5,7 +5,7 @@ const fs = require('fs');
 const recursiveReaddir = require('recursive-readdir');
 
 const app = express();
-const port = 3000;
+const port = 3030;
 
 const pool = new Pool({
     user: 'azureuser',
