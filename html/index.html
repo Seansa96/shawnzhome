@@ -30,8 +30,12 @@
     <a href="#about">About</a>
     
   </div>
-<input type="text" placeholder="Search!" id="searchInput">
-<button onclick="search()">Search</button>
+<form onsubmit="event.preventDefault(); search();">
+<input type="search" placeholder="Search!" id="searchInput">
+<button type="submit">Search</button>
+</form>
+
+
   <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -47,6 +51,9 @@
             <div class="two"><img src="me.png" class="me"/>
             </div>
             <div class="three">
+              <ul id="resultsContainer">
+
+              </ul>
             </div>
     </div>
     <footer>
