@@ -98,7 +98,8 @@ app.get('/api/update', (req, res) => {
                 </head>
                 <body>
                         Working on ${latestStatus}
-                </body>
+                        <img src="primetech.png">
+			 </body>
                 </html>
                 `;
         res.send(styledResponse);

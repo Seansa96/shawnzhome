@@ -19,7 +19,7 @@ fetch(`/api/search?q=${searchTerm}`)
   .then(data => {
     resultsContainer.innerHTML = '';
     data.forEach(item => {
-      const li = document.createElement('<li><a href='+item.filename+'>'+item.filename+'</a></');
+      const li = document.createElement('li');
       li.innerHTML = item.filename;
       resultsContainer.appendChild(li);
     });
