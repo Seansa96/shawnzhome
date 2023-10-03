@@ -19,7 +19,7 @@ const pool = new Pool({
 });
 
 app.use(express.json());  // Middleware to parse JSON requests
-
+app.use('/static', express.static('/home/shawnzx/staticfiles'));  // Static files
 
 app.post('/api/status', (req, res) => {
     const status = req.body.status;
@@ -98,8 +98,8 @@ app.get('/api/update', (req, res) => {
                 </head>
                 <body>
                         Working on ${latestStatus}
-                        <img src="primetech.png">
 			 </body>
+             <img src="/static/primetech.png" style='position: absolute; left: 50px; right: 20px; margin-top:100px;'">
                 </html>
                 `;
         res.send(styledResponse);
