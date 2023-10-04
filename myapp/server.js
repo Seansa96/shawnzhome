@@ -1,12 +1,13 @@
 #!/usr/bin/env node
+require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg');
 const fs = require('fs');
-const recursiveReaddir = require('recursive-readdir');
+const recursive = require('recursive-readdir');
 
 
 
-
+const baseURL = process.env.WEBDAV_BASE_URL;
 const app = express();
 const port = 3030;
 
@@ -19,7 +20,7 @@ const pool = new Pool({
 });
 
 app.use(express.json());  // Middleware to parse JSON requests
-app.use('/static', express.static('/home/shawnzx/staticfiles'));  // Static files
+app.use('/static', express.static(__dirname));  // Static files
 
 app.post('/api/status', (req, res) => {
     const status = req.body.status;
@@ -38,14 +39,15 @@ app.post('/api/status', (req, res) => {
 });
 
 
-recursiveReaddir('../webdav', (err, files) => {
+recursive('../webdav', (err, files) => {
     if (err) {
       console.error("Failed to read directory:", err);
       return;
     }
 
     files.forEach(file => {
-      pool.query('INSERT INTO webdav_files (filename) VALUES ($1)', [file], (error, results) => {
+      const fullURL = baseURL + file;
+      pool.query('INSERT INTO webdav_files (filename) VALUES ($1)', [fullURL], (error, results) => {
         if (error) {
           console.error("Failed to insert file into database:", error);
         }

@@ -9,6 +9,9 @@ function myFunction() {
     x.style.maxHeight = "0px";
   }
 };
+function removePreix(str) {
+  return str.replace(/^(\.\.\/webdav)/, '');
+}
 
 function search() {
 const searchTerm = document.getElementById('searchInput').value;
@@ -18,10 +21,14 @@ fetch(`/api/search?q=${searchTerm}`)
   .then(response => response.json())
   .then(data => {
     resultsContainer.innerHTML = '';
-    data.forEach(item => {
+    
+    data.slice(0, 10).forEach(item => {
       const li = document.createElement('li');
-      li.innerHTML = item.filename;
+      const origFilename = item.filename;
+      const newFilename = removePreix(origFilename);
+      li.innerHTML = `<a href="${item.filename}">${newFilename}</a>`;
       resultsContainer.appendChild(li);
+      
     });
     
   })
