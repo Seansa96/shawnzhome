@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Creation Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Blog Creation Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">New Post</a></li>
+                <li><a href="#">My Posts</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome, [username]!</h2>
+        <p>You have [number of posts] posts.</p>
+        <section>
+            <h3>New Post</h3>
+            <form>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea>
+                <button type="submit">Create Post</button>
+            </form>
+        </section>
+        <section>
+            <h3>My Posts</h3>
+            <ul>
+                <li><a href="#">Post Title 1</a></li>
+                <li><a href="#">Post Title 2</a></li>
+                <li><a href="#">Post Title 3</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Settings</h3>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Save Changes</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2021 Blog Creation Dashboard</p>
+    </footer>
+</body>
+</html>

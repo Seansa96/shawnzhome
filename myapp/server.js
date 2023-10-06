@@ -108,6 +108,11 @@ app.get('/api/update', (req, res) => {
         });
 });
 
+
+app.get('/dashboard', (req, res) => {
+    res.sendFile('/var/www/html' + '/dashboard.html');
+});
+
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });

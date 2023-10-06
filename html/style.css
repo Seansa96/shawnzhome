@@ -153,6 +153,8 @@ iframe {
     display: flex;
     color:  #1C4B55;
     text-align: left;
+    overflow: auto;
+    max-width: 100%;
 }
 
 /*Style the main image in div two */
@@ -181,4 +183,40 @@ footer {
     
     margin-left: 10px;
     margin-right: 10px;
+}
+/* Smaller screens */
+@media only screen and (max-width: 600px) {
+  /* Adjust the font size of the navigation menu links */
+  .topnav a {
+    font-size: 14px;
+  }
+  
+  iframe {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+  /* Adjust the padding of the navigation menu links */
+  .topnav a:not(.icon) {
+    padding: 8px 12px;
+  }
+  
+  /* Adjust the font size of the header */
+  header {
+    font-size: 24px;
+  }
+  
+  .flex-container {
+    flex-direction: column;
+  }
+  /* Adjust the font size of the main content */
+  .flex-container div {
+    font-size: 14px;
+  }
+  
+  /* Adjust the width and height of the main image */
+  img.me {
+    width: 100%;
+    height: auto;
+  }
 }

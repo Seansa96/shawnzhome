@@ -13,6 +13,15 @@ function removePreix(str) {
   return str.replace(/^(\.\.\/webdav)/, '');
 }
 
+//Scroll to search results on mobile
+function scrollIntoContainer(element) {
+  element.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+  });
+}
+
+
 function search() {
 const searchTerm = document.getElementById('searchInput').value;
 const resultsContainer = document.getElementById('resultsContainer');
@@ -30,7 +39,13 @@ fetch(`/api/search?q=${searchTerm}`)
       resultsContainer.appendChild(li);
       
     });
-    
+    var containerState = document.querySelector('div.three'); //After the container gets filled, scroll to the results
+    //console.log(containerState);
+    var containerHTMLState = containerState.innerHTML;
+    //console.log(containerHTMLState); //
+    if (containerHTMLState !== '') {
+      scrollIntoContainer(containerState);
+    }
   })
   .catch(error => {
     console.error('Error:', error);
