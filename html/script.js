@@ -21,6 +21,14 @@ function scrollIntoContainer(element) {
   });
 }
 
+fetch('get-env')
+.then(response => response.json())
+.then(data => {
+  let envValue = data.value;
+  let home = document.getElementById('home');
+  home.innerHTML = "<a href=" + envValue +">Home</a>";
+});
+
 
 function search() {
 const searchTerm = document.getElementById('searchInput').value;

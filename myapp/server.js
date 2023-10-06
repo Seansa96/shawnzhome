@@ -8,6 +8,7 @@ const recursive = require('recursive-readdir');
 
 
 const baseURL = process.env.WEBDAV_BASE_URL;
+const pword = process.env.password;
 const app = express();
 const port = 3030;
 
@@ -15,7 +16,7 @@ const pool = new Pool({
     user: 'azureuser',
     host: 'localhost',
     database: 'shawnzhome',
-    password: 'hoosiers57!',
+    password: pword,
     port: 5432,
 });
 
@@ -65,6 +66,11 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/get-env', (req, res) => {
+    let myEnvVar = baseURL;
+    res.json({value: myEnvVar});
+});
+
 
 app.get('/api/search', (req, res) => {
     const searchTerm = req.query.q;
@@ -112,6 +118,8 @@ app.get('/api/update', (req, res) => {
 app.get('/dashboard', (req, res) => {
     res.sendFile('/var/www/html' + '/dashboard.html');
 });
+
+app.use('/static/html', express.static('/var/www/html'));
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
