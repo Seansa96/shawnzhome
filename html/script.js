@@ -21,7 +21,7 @@ function scrollIntoContainer(element) {
   });
 }
 
-fetch('get-env')
+fetch('/api/get-env')
 .then(response => response.json())
 .then(data => {
   let envValue = data.value;
