@@ -16,16 +16,12 @@ const pool = new Pool({
     user: 'azureuser',
     host: 'localhost',
     database: 'shawnzhome',
-    password: `hoosiers57!`,
+    password: `${pword}`,
     port: 5432,
 });
 
 app.use(express.json());  // Middleware to parse JSON requests
-<<<<<<< HEAD
 app.use('/static', express.static('/var/www/html'));  // Static files
-=======
-app.use('/static', express.static("/var/www/html"));  // Static files
->>>>>>> 0cbf5cca5c21ad588074ecc73eb0fefc5c3a248e
 
 app.post('/api/status', (req, res) => {
     const status = req.body.status;
@@ -200,11 +196,6 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(`/var/www/html`, `/dashboard.html`));
 	console.log("Success");
 });
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 0cbf5cca5c21ad588074ecc73eb0fefc5c3a248e
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
