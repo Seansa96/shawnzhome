@@ -4,7 +4,7 @@ const express = require('express');
 const { Pool } = require('pg');
 const fs = require('fs');
 const recursive = require('recursive-readdir');
-
+const path = require('path');
 
 
 const baseURL = process.env.WEBDAV_BASE_URL;
@@ -16,12 +16,16 @@ const pool = new Pool({
     user: 'azureuser',
     host: 'localhost',
     database: 'shawnzhome',
-    password: pword,
+    password: `hoosiers57!`,
     port: 5432,
 });
 
 app.use(express.json());  // Middleware to parse JSON requests
+<<<<<<< HEAD
 app.use('/static', express.static('/var/www/html'));  // Static files
+=======
+app.use('/static', express.static("/var/www/html"));  // Static files
+>>>>>>> 0cbf5cca5c21ad588074ecc73eb0fefc5c3a248e
 
 app.post('/api/status', (req, res) => {
     const status = req.body.status;
@@ -48,7 +52,7 @@ recursive('../webdav', (err, files) => {
 
     files.forEach(file => {
       const fullURL = baseURL + file;
-      pool.query('INSERT INTO webdav_files (filename) VALUES ($1)', [fullURL], (error, results) => {
+      pool.query('INSERT INTO webdav_files (filename) VALUES ($1) ON CONFLICT (filename) DO NOTHING', [fullURL], (error, results) => {
         if (error) {
           console.error("Failed to insert file into database:", error);
         }
@@ -69,6 +73,7 @@ app.get('/', (req, res) => {
 app.get('/get-env', (req, res) => {
     let myEnvVar = baseURL;
     res.json({value: myEnvVar});
+	console.log("Success");
 });
 
 
@@ -191,10 +196,15 @@ app.get('/api/update', (req, res) => {
 
 
 app.get('/dashboard', (req, res) => {
-    res.sendFile('/var/www/html' + '/dashboard.html');
+    res.type(`html`);
+    res.sendFile(path.join(`/var/www/html`, `/dashboard.html`));
+	console.log("Success");
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0cbf5cca5c21ad588074ecc73eb0fefc5c3a248e
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
