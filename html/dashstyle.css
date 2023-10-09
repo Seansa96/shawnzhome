@@ -1,0 +1,94 @@
+a {
+    color: beige;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: white;
+}
+
+body {
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the page takes up at least the viewport height */
+}
+
+/* Style the header (top bar) */
+header {
+    background-color: burlywood;
+    
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: beige;
+    text-shadow: 2px 4px 4px black;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color: burlywood;
+    position: relative;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: block;
+    max-height: 0px;
+    transition: all 0.45s ease;
+  }
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    background: #1C4B55;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .topnav a:hover {
+    background-color: orange;
+    color: #A18A66;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    display: block;
+    background-color: #1C4B55;
+    color: beige;
+    transition: all 0.35s ease;
+  }
+
+  .news {
+    display: none;
+  }
+  
+#creation, #archive {
+    width: 50%;
+    float: left;
+    height: 100%;
+    border: 10px, solid, black;
+    
+}
+
+#archive {
+    float: right;
+}

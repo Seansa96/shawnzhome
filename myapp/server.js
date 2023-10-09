@@ -21,7 +21,7 @@ const pool = new Pool({
 });
 
 app.use(express.json());  // Middleware to parse JSON requests
-app.use('/static', express.static(__dirname));  // Static files
+app.use('/static', express.static('/var/www/html'));  // Static files
 
 app.post('/api/status', (req, res) => {
     const status = req.body.status;
@@ -85,6 +85,81 @@ app.get('/api/search', (req, res) => {
     });
 });
 
+app.get('/api/submitupdate', (req, res) => {
+    const styledResponse = `
+
+    <html>
+    <head>
+        <!-- Adding Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script>
+            function sendStatus() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/api/status", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                var sqlValue = document.getElementById("sqlQuery").value;
+    
+                var json = JSON.stringify({status: sqlValue});
+    
+                xhr.send(json);
+    
+                xhr.onload = function() {
+                    if (xhr.status >= 202) {
+                        // Display Bootstrap modal for error
+                        document.getElementById("modal-title").textContent = "Error";
+                        document.getElementById("modal-body").textContent = "Error " + xhr.status + ": " + xhr.statusText;
+                    } else {
+                        // Display Bootstrap modal for success
+                        document.getElementById("modal-title").textContent = "Success";
+                        document.getElementById("modal-body").textContent = "Status updated!";
+                    }
+                    $('#messageModal').modal('show'); // Using jQuery to show the modal
+                }
+            };
+        </script>
+    </head>
+    <body style="background-color: burlywood; align-items: center; justify-content:center;">
+        <div class="container">
+            <form onsubmit="event.preventDefault(); sendStatus();">
+                <!-- Bootstrap input field -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="sqlQuery" name="status" placeholder="Enter Status Here">
+                </div>
+                <!-- Bootstrap button -->
+                <button class="btn btn-primary" onclick="sendStatus()" style="background-color: black;">Submit</button>
+            </form>
+        </div>
+    
+        <!-- Bootstrap modal for messages -->
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="right: 50px; border: 10px; border-color: black; text-decoration: none;font-size: 24px; position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); font-family: Arial, Helvetica, Sans Serif;"> <a href="${baseURL}">Home</a> </div>
+        
+        <!-- Including jQuery and Bootstrap's JS library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    `;    
+    res.send(styledResponse);
+});
+
 app.get('/api/update', (req, res) => {
         //console.log("We made it!");
         pool.query('SELECT status FROM statusupdates ORDER BY created_at DESC LIMIT 1', (error, results) =>{
@@ -119,7 +194,7 @@ app.get('/dashboard', (req, res) => {
     res.sendFile('/var/www/html' + '/dashboard.html');
 });
 
-app.use('/static/html', express.static('/var/www/html'));
+
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
